@@ -1,0 +1,1464 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alina Silvera — Nature-Inspired Silver Jewelry</title>
+    <meta name="description" content="Handcrafted silver jewelry inspired by the quiet strength of nature and the timeless elegance of women. Each piece carries a fragment of the natural world.">
+    <meta property="og:title" content="Alina Silvera — Nature-Inspired Silver Jewelry">
+    <meta property="og:description" content="Jewelry created for women who find beauty in simplicity, strength in softness, and peace in the present moment.">
+    <meta property="og:type" content="website">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&family=Raleway:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+    <style>
+        /* ─── RESET ─────────────────────────────────────────── */
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+        html { scroll-behavior: smooth; font-size: 16px; }
+
+        /* ─── DESIGN TOKENS ──────────────────────────────────── */
+        :root {
+            --navy:        #0D1B2A;
+            --navy-deep:   #091422;
+            --navy-mid:    #152233;
+            --cream:       #FDFAF7;
+            --blush:       #F7EAED;
+            --blush-deep:  #EDD8DE;
+            --white:       #FFFFFF;
+            --silver:      #C4B5AF;
+            --silver-light:#E5DCDA;
+            --silver-pale: #F0ECEA;
+            --text:        #1C1C1C;
+            --text-mid:    #5A5451;
+            --text-soft:   #8E8480;
+
+            --nav-h: 72px;
+            --max-w: 1240px;
+            --gap:   clamp(24px, 4vw, 60px);
+        }
+
+        /* ─── BASE ───────────────────────────────────────────── */
+        body {
+            font-family: 'Raleway', sans-serif;
+            font-weight: 300;
+            color: var(--text);
+            background: var(--cream);
+            line-height: 1.75;
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, h4 {
+            font-family: 'Cormorant Garamond', serif;
+            font-weight: 400;
+            line-height: 1.1;
+        }
+
+        img { width: 100%; height: 100%; object-fit: cover; display: block; }
+        a   { text-decoration: none; color: inherit; transition: opacity .25s; }
+        a:hover { opacity: .75; }
+
+        .container {
+            width: 100%;
+            max-width: var(--max-w);
+            margin: 0 auto;
+            padding: 0 var(--gap);
+        }
+
+        /* ─── UTILITY ────────────────────────────────────────── */
+        .eyebrow {
+            display: block;
+            font-family: 'Raleway', sans-serif;
+            font-size: 10px;
+            font-weight: 500;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            color: var(--silver);
+            margin-bottom: 20px;
+        }
+
+        .btn {
+            display: inline-block;
+            font-family: 'Raleway', sans-serif;
+            font-size: 10px;
+            font-weight: 500;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            padding: 14px 32px;
+            border: none;
+            cursor: pointer;
+            transition: background .3s, color .3s, transform .25s;
+        }
+
+        .btn:hover { opacity: 1; transform: translateY(-2px); }
+
+        .btn-dark  { background: var(--navy); color: var(--cream); }
+        .btn-dark:hover  { background: var(--navy-mid); }
+
+        .btn-ghost { background: transparent; color: var(--navy); border: 1px solid var(--navy); }
+        .btn-ghost:hover { background: var(--navy); color: var(--cream); }
+
+        .btn-light { background: var(--cream); color: var(--navy); }
+        .btn-light:hover { background: var(--blush); }
+
+        /* ─── PAGE-LOAD ANIMATIONS ───────────────────────────── */
+        .reveal {
+            opacity: 0;
+            transform: translateY(28px);
+            transition: opacity .8s ease, transform .8s ease;
+        }
+        .reveal.visible { opacity: 1; transform: none; }
+
+        .reveal-d1 { transition-delay: .1s; }
+        .reveal-d2 { transition-delay: .2s; }
+        .reveal-d3 { transition-delay: .35s; }
+        .reveal-d4 { transition-delay: .5s; }
+        .reveal-d5 { transition-delay: .65s; }
+
+        /* ─── DECORATIVE LINE ─────────────────────────────────── */
+        .deco-line {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            margin-bottom: 32px;
+        }
+        .deco-line::before,
+        .deco-line::after {
+            content: '';
+            flex: 1;
+            height: 1px;
+            background: var(--silver-light);
+        }
+        .deco-line span {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 18px;
+            color: var(--silver);
+            font-style: italic;
+        }
+
+        /* ═══════════════════════════════════════════════════════
+           NAVIGATION
+        ═══════════════════════════════════════════════════════ */
+        #nav {
+            position: fixed;
+            top: 0; left: 0;
+            width: 100%;
+            height: var(--nav-h);
+            z-index: 999;
+            display: flex;
+            align-items: center;
+            background: var(--navy);
+            padding: 0 var(--gap);
+            transition: box-shadow .4s;
+        }
+        #nav.shadowed { box-shadow: 0 4px 30px rgba(0,0,0,.25); }
+
+        .nav-inner {
+            width: 100%;
+            max-width: var(--max-w);
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .nav-logo {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 20px;
+            font-weight: 500;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            color: var(--cream);
+            opacity: 1 !important;
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 36px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            font-size: 10px;
+            font-weight: 400;
+            letter-spacing: 2.5px;
+            text-transform: uppercase;
+            color: rgba(253,250,247,.6);
+            transition: color .25s;
+        }
+        .nav-links a:hover { color: var(--cream); opacity: 1; }
+
+        .nav-etsy {
+            padding: 8px 22px;
+            border: 1px solid rgba(253,250,247,.3);
+            color: var(--cream) !important;
+            font-size: 10px !important;
+            letter-spacing: 2px;
+            transition: background .25s, border-color .25s !important;
+        }
+        .nav-etsy:hover {
+            background: var(--cream);
+            color: var(--navy) !important;
+            border-color: var(--cream);
+            opacity: 1 !important;
+        }
+
+        /* hamburger */
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 4px;
+        }
+        .hamburger span {
+            width: 22px;
+            height: 1px;
+            background: var(--cream);
+            display: block;
+            transition: all .3s;
+        }
+
+        /* mobile drawer */
+        .mobile-nav {
+            display: none;
+            position: fixed;
+            top: var(--nav-h);
+            left: 0;
+            width: 100%;
+            background: var(--navy-deep);
+            z-index: 998;
+            padding: 40px var(--gap);
+            flex-direction: column;
+            gap: 0;
+        }
+        .mobile-nav.open { display: flex; }
+        .mobile-nav a {
+            color: rgba(253,250,247,.75);
+            font-size: 13px;
+            letter-spacing: 2.5px;
+            text-transform: uppercase;
+            padding: 16px 0;
+            border-bottom: 1px solid rgba(255,255,255,.06);
+        }
+        .mobile-nav a:last-child { border-bottom: none; margin-top: 8px; color: var(--cream); opacity: 1; }
+
+        /* ═══════════════════════════════════════════════════════
+           HERO
+        ═══════════════════════════════════════════════════════ */
+        #hero {
+            min-height: 100svh;
+            display: grid;
+            grid-template-columns: 48% 52%;
+            padding-top: var(--nav-h);
+        }
+
+        .hero-text {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: 80px var(--gap) 80px clamp(32px, 6vw, 100px);
+            background: var(--cream);
+        }
+
+        .hero-h1 {
+            font-size: clamp(52px, 5.5vw, 84px);
+            color: var(--navy);
+            margin-bottom: 10px;
+            letter-spacing: -1px;
+        }
+        .hero-h1 em { display: block; font-style: italic; font-weight: 300; }
+
+        .hero-sub {
+            font-size: 11px;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            color: var(--silver);
+            margin-bottom: 36px;
+        }
+
+        .hero-desc {
+            font-size: 15px;
+            color: var(--text-mid);
+            max-width: 400px;
+            line-height: 1.85;
+            margin-bottom: 48px;
+        }
+
+        .hero-ctas { display: flex; gap: 14px; flex-wrap: wrap; }
+
+        .hero-visual {
+            position: relative;
+            overflow: hidden;
+        }
+        .hero-visual img {
+            transition: transform 8s ease;
+        }
+        .hero-visual:hover img { transform: scale(1.04); }
+
+        .hero-accent {
+            position: absolute;
+            bottom: 32px;
+            left: 32px;
+            background: rgba(13,27,42,.72);
+            backdrop-filter: blur(8px);
+            padding: 16px 24px;
+            color: var(--cream);
+        }
+        .hero-accent p {
+            font-family: 'Cormorant Garamond', serif;
+            font-style: italic;
+            font-size: 15px;
+            color: rgba(253,250,247,.85);
+        }
+        .hero-accent span {
+            font-size: 9px;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            color: var(--silver);
+        }
+
+        /* ═══════════════════════════════════════════════════════
+           BRAND STATEMENT
+        ═══════════════════════════════════════════════════════ */
+        #statement {
+            background: var(--blush);
+            padding: 110px var(--gap);
+            text-align: center;
+        }
+
+        .statement-inner {
+            max-width: 780px;
+            margin: 0 auto;
+        }
+
+        #statement h2 {
+            font-size: clamp(36px, 4.5vw, 62px);
+            color: var(--navy);
+            margin-bottom: 36px;
+            font-style: italic;
+            line-height: 1.15;
+        }
+
+        #statement p {
+            font-size: 15px;
+            color: var(--text-mid);
+            line-height: 1.9;
+            margin-bottom: 18px;
+        }
+
+        .ornament {
+            margin: 40px auto;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 20px;
+            color: var(--silver);
+        }
+        .ornament::before,
+        .ornament::after {
+            content: '';
+            width: 60px;
+            height: 1px;
+            background: var(--blush-deep);
+        }
+        .ornament-dot {
+            width: 5px;
+            height: 5px;
+            border-radius: 50%;
+            background: var(--silver);
+        }
+
+        /* ═══════════════════════════════════════════════════════
+           ABOUT
+        ═══════════════════════════════════════════════════════ */
+        #about {
+            display: grid;
+            grid-template-columns: 5fr 6fr;
+            min-height: 680px;
+        }
+
+        .about-visual {
+            position: relative;
+            overflow: hidden;
+        }
+        .about-visual img { transition: transform 6s ease; }
+        .about-visual:hover img { transform: scale(1.04); }
+
+        .about-text {
+            background: var(--cream);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: 80px clamp(32px, 6vw, 100px) 80px 64px;
+        }
+
+        .about-text h2 {
+            font-size: clamp(34px, 3.5vw, 52px);
+            color: var(--navy);
+            margin-bottom: 32px;
+        }
+
+        .about-text p {
+            font-size: 15px;
+            color: var(--text-mid);
+            line-height: 1.9;
+            margin-bottom: 18px;
+        }
+
+        .about-signature {
+            margin-top: 16px;
+            font-family: 'Cormorant Garamond', serif;
+            font-style: italic;
+            font-size: 22px;
+            color: var(--navy);
+            opacity: .5;
+        }
+
+        /* ═══════════════════════════════════════════════════════
+           NATURE ON SKIN
+        ═══════════════════════════════════════════════════════ */
+        #nature {
+            background: var(--navy);
+            padding: 120px var(--gap);
+        }
+
+        .nature-inner {
+            max-width: var(--max-w);
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 80px;
+            align-items: center;
+        }
+
+        .nature-text .eyebrow { color: var(--silver); }
+
+        .nature-text h2 {
+            font-size: clamp(36px, 3.8vw, 58px);
+            color: var(--cream);
+            margin-bottom: 36px;
+            font-style: italic;
+        }
+
+        .nature-text p {
+            font-size: 15px;
+            color: rgba(253,250,247,.65);
+            line-height: 1.95;
+            margin-bottom: 18px;
+        }
+
+        .nature-quote {
+            margin-top: 40px;
+            padding-left: 24px;
+            border-left: 1px solid rgba(196,181,175,.3);
+        }
+        .nature-quote p {
+            font-family: 'Cormorant Garamond', serif;
+            font-style: italic;
+            font-size: 22px;
+            color: rgba(253,250,247,.55);
+            line-height: 1.5;
+        }
+
+        .nature-images {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 14px;
+        }
+
+        .nature-img {
+            overflow: hidden;
+        }
+        .nature-img:first-child {
+            margin-top: 48px;
+            aspect-ratio: 3/4;
+        }
+        .nature-img:last-child { aspect-ratio: 3/4; }
+
+        .nature-img img { transition: transform .6s ease; }
+        .nature-img:hover img { transform: scale(1.06); }
+
+        /* ═══════════════════════════════════════════════════════
+           WOMEN & NATURE
+        ═══════════════════════════════════════════════════════ */
+        #women {
+            display: grid;
+            grid-template-columns: 6fr 5fr;
+            min-height: 640px;
+        }
+
+        .women-text {
+            background: var(--blush);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: 80px 64px 80px clamp(32px, 6vw, 100px);
+        }
+
+        .women-text h2 {
+            font-size: clamp(32px, 3.2vw, 50px);
+            color: var(--navy);
+            margin-bottom: 32px;
+            max-width: 480px;
+        }
+
+        .women-text p {
+            font-size: 15px;
+            color: var(--text-mid);
+            line-height: 1.9;
+            margin-bottom: 18px;
+            max-width: 480px;
+        }
+
+        .women-visual {
+            overflow: hidden;
+            position: relative;
+        }
+        .women-visual img { transition: transform 6s ease; }
+        .women-visual:hover img { transform: scale(1.04); }
+
+        /* ═══════════════════════════════════════════════════════
+           GALLERY STRIP
+        ═══════════════════════════════════════════════════════ */
+        .gallery-strip {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 3px;
+            background: var(--navy);
+        }
+
+        .gs-item {
+            aspect-ratio: 1;
+            overflow: hidden;
+            position: relative;
+        }
+        .gs-item img {
+            transition: transform .55s ease, filter .55s;
+            filter: brightness(.88) saturate(.9);
+        }
+        .gs-item:hover img {
+            transform: scale(1.08);
+            filter: brightness(1) saturate(1);
+        }
+
+        /* ═══════════════════════════════════════════════════════
+           COLLECTION
+        ═══════════════════════════════════════════════════════ */
+        #collection {
+            padding: 110px var(--gap);
+            background: var(--cream);
+        }
+
+        .section-head {
+            text-align: center;
+            margin-bottom: 64px;
+        }
+        .section-head h2 {
+            font-size: clamp(36px, 4vw, 60px);
+            color: var(--navy);
+            margin-bottom: 18px;
+        }
+        .section-head p {
+            font-size: 15px;
+            color: var(--text-mid);
+            max-width: 520px;
+            margin: 0 auto;
+            line-height: 1.85;
+        }
+
+        .products {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 32px;
+            max-width: var(--max-w);
+            margin: 0 auto;
+        }
+
+        .product-card {
+            background: var(--white);
+            position: relative;
+            transition: transform .35s ease, box-shadow .35s ease;
+        }
+        .product-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 24px 48px rgba(13,27,42,.09);
+        }
+
+        .pc-image {
+            aspect-ratio: 3/4;
+            overflow: hidden;
+            position: relative;
+        }
+        .pc-image img { transition: transform .65s ease; }
+        .product-card:hover .pc-image img { transform: scale(1.06); }
+
+        .pc-badge {
+            position: absolute;
+            top: 16px;
+            right: 16px;
+            background: var(--navy);
+            color: var(--cream);
+            font-size: 8px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            padding: 5px 10px;
+        }
+
+        .pc-body { padding: 24px 24px 28px; }
+
+        .pc-material {
+            font-size: 9px;
+            letter-spacing: 2.5px;
+            text-transform: uppercase;
+            color: var(--silver);
+            margin-bottom: 8px;
+        }
+
+        .pc-name {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 23px;
+            color: var(--navy);
+            margin-bottom: 12px;
+            line-height: 1.2;
+        }
+
+        .pc-desc {
+            font-size: 13px;
+            color: var(--text-soft);
+            line-height: 1.8;
+            margin-bottom: 20px;
+        }
+
+        .pc-price {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 14px;
+            letter-spacing: 3px;
+            color: var(--silver);
+            margin-bottom: 20px;
+        }
+
+        .pc-btns {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 8px;
+        }
+
+        .pc-btn {
+            padding: 10px 8px;
+            font-family: 'Raleway', sans-serif;
+            font-size: 9px;
+            font-weight: 500;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            text-align: center;
+            cursor: pointer;
+            transition: background .25s, color .25s;
+            border: none;
+            display: block;
+        }
+
+        .pc-btn-dark  { background: var(--navy); color: var(--cream); }
+        .pc-btn-dark:hover  { background: var(--navy-mid); opacity: 1; }
+        .pc-btn-etsy  { background: transparent; color: var(--navy); border: 1px solid var(--silver-light); }
+        .pc-btn-etsy:hover  { background: var(--navy); color: var(--cream); opacity: 1; }
+
+        /* ═══════════════════════════════════════════════════════
+           JOURNAL
+        ═══════════════════════════════════════════════════════ */
+        #journal {
+            background: var(--blush);
+            padding: 110px var(--gap);
+        }
+
+        .journal-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 28px;
+            max-width: var(--max-w);
+            margin: 0 auto;
+        }
+
+        .journal-card {
+            background: var(--white);
+            padding: 40px 36px;
+            position: relative;
+            transition: transform .3s, box-shadow .3s;
+            cursor: pointer;
+        }
+        .journal-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 16px 36px rgba(13,27,42,.07);
+        }
+
+        .jc-tag {
+            font-size: 9px;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            color: var(--silver);
+            margin-bottom: 18px;
+        }
+
+        .journal-card h3 {
+            font-size: 24px;
+            color: var(--navy);
+            line-height: 1.25;
+            margin-bottom: 18px;
+        }
+
+        .journal-card p {
+            font-size: 13px;
+            color: var(--text-soft);
+            line-height: 1.85;
+            margin-bottom: 28px;
+        }
+
+        .jc-read {
+            display: inline-block;
+            font-size: 9px;
+            letter-spacing: 2.5px;
+            text-transform: uppercase;
+            color: var(--navy);
+            padding-bottom: 3px;
+            border-bottom: 1px solid var(--navy);
+            opacity: .4;
+        }
+
+        /* ═══════════════════════════════════════════════════════
+           CTA
+        ═══════════════════════════════════════════════════════ */
+        #cta {
+            background: var(--navy);
+            padding: 130px var(--gap);
+            text-align: center;
+        }
+
+        #cta .eyebrow { color: rgba(196,181,175,.6); }
+
+        #cta h2 {
+            font-size: clamp(44px, 6vw, 88px);
+            color: var(--cream);
+            font-style: italic;
+            margin-bottom: 28px;
+        }
+
+        #cta p {
+            font-size: 15px;
+            color: rgba(253,250,247,.6);
+            max-width: 520px;
+            margin: 0 auto 52px;
+            line-height: 1.9;
+        }
+
+        /* ═══════════════════════════════════════════════════════
+           FOOTER
+        ═══════════════════════════════════════════════════════ */
+        #footer {
+            background: var(--navy-deep);
+            padding: 80px var(--gap) 40px;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 2.4fr 1fr 1fr 1fr;
+            gap: 60px;
+            max-width: var(--max-w);
+            margin: 0 auto 64px;
+        }
+
+        .footer-brand h3 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 24px;
+            font-weight: 500;
+            letter-spacing: 2px;
+            color: var(--cream);
+            margin-bottom: 18px;
+        }
+
+        .footer-brand p {
+            font-size: 13px;
+            color: rgba(253,250,247,.45);
+            line-height: 1.9;
+            max-width: 260px;
+        }
+
+        .footer-socials {
+            display: flex;
+            gap: 10px;
+            margin-top: 28px;
+        }
+
+        .footer-social-link {
+            width: 36px;
+            height: 36px;
+            border: 1px solid rgba(253,250,247,.12);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 10px;
+            font-weight: 500;
+            letter-spacing: .5px;
+            color: rgba(253,250,247,.4);
+            transition: all .3s;
+        }
+        .footer-social-link:hover {
+            background: var(--cream);
+            border-color: var(--cream);
+            color: var(--navy);
+            opacity: 1;
+        }
+
+        .footer-col h4 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 18px;
+            color: var(--cream);
+            margin-bottom: 22px;
+        }
+
+        .footer-col ul { list-style: none; }
+        .footer-col ul li { margin-bottom: 14px; }
+        .footer-col ul li a {
+            font-size: 12px;
+            letter-spacing: .5px;
+            color: rgba(253,250,247,.4);
+            transition: color .25s;
+        }
+        .footer-col ul li a:hover { color: var(--cream); opacity: 1; }
+
+        .footer-bottom {
+            max-width: var(--max-w);
+            margin: 0 auto;
+            padding-top: 32px;
+            border-top: 1px solid rgba(253,250,247,.07);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+
+        .footer-bottom p {
+            font-size: 11px;
+            letter-spacing: .5px;
+            color: rgba(253,250,247,.22);
+        }
+
+        /* ═══════════════════════════════════════════════════════
+           RESPONSIVE
+        ═══════════════════════════════════════════════════════ */
+        @media (max-width: 1080px) {
+            #hero {
+                grid-template-columns: 1fr;
+                min-height: auto;
+            }
+            .hero-text  { padding: 64px var(--gap); }
+            .hero-visual { aspect-ratio: 4/3; }
+
+            #about {
+                grid-template-columns: 1fr;
+            }
+            .about-visual { aspect-ratio: 5/3; }
+            .about-text   { padding: 64px var(--gap); }
+
+            .nature-inner {
+                grid-template-columns: 1fr;
+                gap: 56px;
+            }
+            #nature { padding: 80px var(--gap); }
+
+            #women { grid-template-columns: 1fr; }
+            .women-text   { order: 2; padding: 64px var(--gap); }
+            .women-visual { order: 1; aspect-ratio: 5/3; }
+
+            .products {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 20px;
+            }
+
+            .gallery-strip { grid-template-columns: repeat(4, 1fr); }
+            .gs-item:last-child { display: none; }
+
+            .journal-grid { grid-template-columns: 1fr; }
+
+            .footer-grid {
+                grid-template-columns: 1fr 1fr;
+                gap: 40px;
+            }
+        }
+
+        @media (max-width: 640px) {
+            :root { --gap: 20px; }
+
+            .nav-links { display: none; }
+            .hamburger { display: flex; }
+
+            #hero { padding-top: var(--nav-h); }
+            .hero-ctas { flex-direction: column; }
+            .btn { text-align: center; }
+
+            .products { grid-template-columns: 1fr; }
+
+            .gallery-strip { grid-template-columns: repeat(3, 1fr); }
+            .gs-item:nth-child(n+4) { display: none; }
+
+            .footer-grid { grid-template-columns: 1fr; gap: 32px; }
+            .footer-bottom { flex-direction: column; text-align: center; }
+
+            #collection, #journal { padding: 72px var(--gap); }
+            #statement, #nature, #cta { padding: 80px var(--gap); }
+        }
+    </style>
+</head>
+<body>
+
+<!-- ═══════════════════════════════════════════════════════
+     NAVIGATION
+═══════════════════════════════════════════════════════ -->
+<nav id="nav">
+    <div class="nav-inner">
+        <a class="nav-logo" href="#hero">Alina Silvera</a>
+
+        <ul class="nav-links">
+            <li><a href="#hero">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#collection">Collection</a></li>
+            <li><a href="#journal">Journal</a></li>
+            <li><a href="#footer">Contact</a></li>
+            <li>
+                <a href="https://alinasilvera.etsy.com"
+                   target="_blank"
+                   rel="noopener"
+                   class="nav-etsy"
+                   onclick="AS.track('nav_etsy_click')">
+                    Shop on Etsy
+                </a>
+            </li>
+        </ul>
+
+        <button class="hamburger" id="hamburger" aria-label="Open menu">
+            <span></span><span></span><span></span>
+        </button>
+    </div>
+</nav>
+
+<div class="mobile-nav" id="mobileNav">
+    <a href="#hero"       onclick="closeMobile()">Home</a>
+    <a href="#about"      onclick="closeMobile()">About</a>
+    <a href="#collection" onclick="closeMobile()">Collection</a>
+    <a href="#journal"    onclick="closeMobile()">Journal</a>
+    <a href="#footer"     onclick="closeMobile()">Contact</a>
+    <a href="https://alinasilvera.etsy.com" target="_blank" rel="noopener" onclick="AS.track('mobile_etsy_click')">Shop on Etsy →</a>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════
+     HERO
+═══════════════════════════════════════════════════════ -->
+<section id="hero">
+    <div class="hero-text">
+        <span class="eyebrow reveal reveal-d1">Silver · Stone · Nature</span>
+        <h1 class="hero-h1 reveal reveal-d2">
+            Nature,<br>carried
+            <em>with grace.</em>
+        </h1>
+        <p class="hero-sub reveal reveal-d3">Alina Silvera — Handcrafted Jewelry</p>
+        <p class="hero-desc reveal reveal-d4">
+            Jewelry inspired by the quiet strength of nature and the timeless elegance of women.
+            Each piece is designed to feel simple, refined, and deeply connected to the natural world.
+        </p>
+        <div class="hero-ctas reveal reveal-d5">
+            <a href="#collection"
+               class="btn btn-dark"
+               onclick="AS.track('hero_explore_collection')">
+                Explore the Collection
+            </a>
+            <a href="#about"
+               class="btn btn-ghost"
+               onclick="AS.track('hero_discover_story')">
+                Discover the Story
+            </a>
+        </div>
+    </div>
+
+    <div class="hero-visual">
+        <img src="This is me.jpeg" alt="Alina Silvera — Nature-inspired jewelry">
+        <div class="hero-accent">
+            <p>"To wear Alina Silvera is to carry a fragment of nature with you."</p>
+            <span>— The Brand</span>
+        </div>
+    </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════
+     BRAND STATEMENT
+═══════════════════════════════════════════════════════ -->
+<section id="statement">
+    <div class="statement-inner">
+        <span class="eyebrow reveal">The Brand</span>
+        <h2 class="reveal reveal-d1">
+            Women do not simply wear beauty.<br>
+            They transform it.
+        </h2>
+        <div class="ornament reveal reveal-d2">
+            <div class="ornament-dot"></div>
+            <div class="ornament-dot"></div>
+            <div class="ornament-dot"></div>
+        </div>
+        <p class="reveal reveal-d2">
+            Alina Silvera is a jewelry brand inspired by the relationship between women and nature.
+            We believe that women do not simply wear beauty — they transform it.
+        </p>
+        <p class="reveal reveal-d3">
+            Through silver, stone, form, and light, each piece carries a quiet reminder
+            of nature's strength, softness, and wisdom.
+        </p>
+    </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════
+     ABOUT
+═══════════════════════════════════════════════════════ -->
+<section id="about">
+    <div class="about-visual">
+        <img src="Luna.jpeg" alt="About Alina Silvera">
+    </div>
+    <div class="about-text">
+        <span class="eyebrow reveal">Our Story</span>
+        <h2 class="reveal reveal-d1">Born from a desire for calm, elegant beauty.</h2>
+        <p class="reveal reveal-d2">
+            Alina Silvera was born from a desire to create jewelry that feels calm, elegant, and meaningful.
+            Our pieces are inspired by the textures, colors, and silent power of the natural world.
+        </p>
+        <p class="reveal reveal-d3">
+            Stones, organic forms, soft lines, and refined details come together to create pieces that can
+            be worn close to the body and close to the self. For us, jewelry is not only decoration —
+            it is a way of carrying nature on the body.
+        </p>
+        <p class="reveal reveal-d3">
+            Women are among nature's greatest transformers. They hold, shape, protect, create, and renew
+            life in visible and invisible ways. Alina Silvera is a tribute to that quiet power.
+        </p>
+        <p class="reveal reveal-d4">
+            Each design is created for women who seek simplicity, elegance, and a sense of peace
+            in the present moment.
+        </p>
+        <p class="about-signature reveal reveal-d5">— Alina Silvera</p>
+    </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════
+     NATURE ON SKIN
+═══════════════════════════════════════════════════════ -->
+<section id="nature">
+    <div class="nature-inner">
+        <div class="nature-text">
+            <span class="eyebrow reveal">Nature on Skin</span>
+            <h2 class="reveal reveal-d1">There is a quiet language in nature.</h2>
+            <p class="reveal reveal-d2">The curve of a leaf. The depth of a stone. The softness of morning light. The strength of the earth beneath our feet.</p>
+            <p class="reveal reveal-d2">Alina Silvera brings these elements into jewelry pieces that feel grounded, graceful, and intimate.</p>
+            <div class="nature-quote reveal reveal-d3">
+                <p>"To wear Alina Silvera is to carry a fragment of nature with you. Not loudly. Not heavily. But gently, as a reminder of presence, beauty, and inner strength."</p>
+            </div>
+        </div>
+        <div class="nature-images reveal reveal-d2">
+            <div class="nature-img">
+                <img src="Pink Beauty.jpeg" alt="Nature on Skin">
+            </div>
+            <div class="nature-img">
+                <img src="Turskih traditions (1).jpeg" alt="Nature on Skin">
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════
+     WOMEN & NATURE
+═══════════════════════════════════════════════════════ -->
+<section id="women">
+    <div class="women-text">
+        <span class="eyebrow reveal">Women & Nature</span>
+        <h2 class="reveal reveal-d1">Women as the Great Transformers of Nature.</h2>
+        <p class="reveal reveal-d2">
+            A woman carries more than beauty. She carries memory, intuition, creation, and transformation.
+        </p>
+        <p class="reveal reveal-d2">
+            Alina Silvera is inspired by the idea that women are deeply connected to the cycles of nature.
+            They receive, transform, nurture, and give form to what is unseen.
+        </p>
+        <p class="reveal reveal-d3">
+            Our jewelry reflects this connection through natural stones, silver forms, and calm design language.
+            Each piece is made to honor the woman who wears it: her softness, her strength, her silence,
+            her movement, and her becoming.
+        </p>
+    </div>
+    <div class="women-visual">
+        <img src="Turskih traditions (2).jpeg" alt="Women and Nature">
+    </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════
+     GALLERY STRIP
+═══════════════════════════════════════════════════════ -->
+<div class="gallery-strip">
+    <div class="gs-item"><img src="Elegant saphire.jpeg"   alt="Elegant Sapphire"></div>
+    <div class="gs-item"><img src="Sun garnet.jpeg"        alt="Sun Garnet"></div>
+    <div class="gs-item"><img src="Dot.jpeg"               alt="Dot Pendant"></div>
+    <div class="gs-item"><img src="Round Handmade.jpeg"    alt="Round Handmade"></div>
+    <div class="gs-item"><img src="Elegant Saphire 2.jpeg" alt="Elegant Sapphire II"></div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════
+     COLLECTION
+═══════════════════════════════════════════════════════ -->
+<section id="collection">
+    <div class="section-head">
+        <span class="eyebrow reveal">The Collection</span>
+        <h2 class="reveal reveal-d1">Handcrafted with intention.</h2>
+        <p class="reveal reveal-d2">
+            A selection of handmade and thoughtfully designed jewelry pieces inspired by nature,
+            silver, stone, and feminine elegance. Each piece is created to be simple enough for
+            everyday wear and meaningful enough to feel personal.
+        </p>
+    </div>
+
+    <div class="products">
+
+        <!-- Product 1 -->
+        <div class="product-card reveal" onclick="AS.track('product_click_ruby')">
+            <div class="pc-image">
+                <img src="Basic Ruby.jpeg" alt="Ruby Oval Bezel Necklace">
+                <span class="pc-badge">Handcrafted</span>
+            </div>
+            <div class="pc-body">
+                <p class="pc-material">925 Sterling Silver · Ruby</p>
+                <h3 class="pc-name">Ruby Oval Bezel Necklace</h3>
+                <p class="pc-desc">A refined ruby necklace set in silver, designed with a warm and elegant presence. Made to be worn close to the heart, it brings a quiet touch of color, strength, and grace.</p>
+                <p class="pc-price">— · · ·</p>
+                <div class="pc-btns">
+                    <a href="#" class="pc-btn pc-btn-dark" onclick="AS.track('details_ruby'); event.stopPropagation()">View Details</a>
+                    <a href="https://alinasilvera.etsy.com" target="_blank" rel="noopener" class="pc-btn pc-btn-etsy" onclick="AS.track('etsy_ruby'); event.stopPropagation()">View on Etsy</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Product 2 -->
+        <div class="product-card reveal reveal-d1" onclick="AS.track('product_click_moon_leaf')">
+            <div class="pc-image">
+                <img src="Moon leaf.jpeg" alt="Silver Nature Pendant">
+                <span class="pc-badge">Handcrafted</span>
+            </div>
+            <div class="pc-body">
+                <p class="pc-material">925 Sterling Silver</p>
+                <h3 class="pc-name">Silver Nature Pendant</h3>
+                <p class="pc-desc">A delicate silver pendant inspired by organic forms and the quiet rhythm of nature. Designed for women who love simplicity, softness, and meaningful details.</p>
+                <p class="pc-price">— · · ·</p>
+                <div class="pc-btns">
+                    <a href="#" class="pc-btn pc-btn-dark" onclick="AS.track('details_moon_leaf'); event.stopPropagation()">View Details</a>
+                    <a href="https://alinasilvera.etsy.com" target="_blank" rel="noopener" class="pc-btn pc-btn-etsy" onclick="AS.track('etsy_moon_leaf'); event.stopPropagation()">View on Etsy</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Product 3 -->
+        <div class="product-card reveal reveal-d2" onclick="AS.track('product_click_quiet_drop')">
+            <div class="pc-image">
+                <img src="Quiet Drop (1).jpeg" alt="Stone & Silver Necklace">
+                <span class="pc-badge">Handcrafted</span>
+            </div>
+            <div class="pc-body">
+                <p class="pc-material">925 Sterling Silver · Natural Stone</p>
+                <h3 class="pc-name">Stone & Silver Necklace</h3>
+                <p class="pc-desc">A graceful necklace that brings together natural stone and silver in a calm, elegant form. A daily reminder of inner balance, feminine strength, and the beauty of the present moment.</p>
+                <p class="pc-price">— · · ·</p>
+                <div class="pc-btns">
+                    <a href="#" class="pc-btn pc-btn-dark" onclick="AS.track('details_quiet_drop'); event.stopPropagation()">View Details</a>
+                    <a href="https://alinasilvera.etsy.com" target="_blank" rel="noopener" class="pc-btn pc-btn-etsy" onclick="AS.track('etsy_quiet_drop'); event.stopPropagation()">View on Etsy</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Product 4 -->
+        <div class="product-card reveal reveal-d1" onclick="AS.track('product_click_amethyst')">
+            <div class="pc-image">
+                <img src="Amethyst  (1).jpeg" alt="Amethyst Pendant">
+                <span class="pc-badge">Handcrafted</span>
+            </div>
+            <div class="pc-body">
+                <p class="pc-material">925 Sterling Silver · Amethyst</p>
+                <h3 class="pc-name">Amethyst Drop Pendant</h3>
+                <p class="pc-desc">A soft and refined amethyst pendant that carries the calming energy of the stone in an elegant silver setting. Grounded, graceful, and intimate.</p>
+                <p class="pc-price">— · · ·</p>
+                <div class="pc-btns">
+                    <a href="#" class="pc-btn pc-btn-dark" onclick="AS.track('details_amethyst'); event.stopPropagation()">View Details</a>
+                    <a href="https://alinasilvera.etsy.com" target="_blank" rel="noopener" class="pc-btn pc-btn-etsy" onclick="AS.track('etsy_amethyst'); event.stopPropagation()">View on Etsy</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Product 5 -->
+        <div class="product-card reveal reveal-d2" onclick="AS.track('product_click_mother_leaf')">
+            <div class="pc-image">
+                <img src="Mother Leaf.jpeg" alt="Mother Leaf Necklace">
+                <span class="pc-badge">Handcrafted</span>
+            </div>
+            <div class="pc-body">
+                <p class="pc-material">925 Sterling Silver</p>
+                <h3 class="pc-name">Mother Leaf Necklace</h3>
+                <p class="pc-desc">Inspired by the veins and curves of a leaf, this piece carries the quiet story of growth, strength, and renewal. Simple, elegant, and deeply connected to nature.</p>
+                <p class="pc-price">— · · ·</p>
+                <div class="pc-btns">
+                    <a href="#" class="pc-btn pc-btn-dark" onclick="AS.track('details_mother_leaf'); event.stopPropagation()">View Details</a>
+                    <a href="https://alinasilvera.etsy.com" target="_blank" rel="noopener" class="pc-btn pc-btn-etsy" onclick="AS.track('etsy_mother_leaf'); event.stopPropagation()">View on Etsy</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Product 6 -->
+        <div class="product-card reveal reveal-d3" onclick="AS.track('product_click_drop')">
+            <div class="pc-image">
+                <img src="Drop.jpeg" alt="The Drop">
+                <span class="pc-badge">Handcrafted</span>
+            </div>
+            <div class="pc-body">
+                <p class="pc-material">925 Sterling Silver</p>
+                <h3 class="pc-name">The Drop</h3>
+                <p class="pc-desc">A single drop, suspended in silver. Minimal, grounded, and full of quiet meaning. A piece for every day, every mood, and every moment of stillness.</p>
+                <p class="pc-price">— · · ·</p>
+                <div class="pc-btns">
+                    <a href="#" class="pc-btn pc-btn-dark" onclick="AS.track('details_drop'); event.stopPropagation()">View Details</a>
+                    <a href="https://alinasilvera.etsy.com" target="_blank" rel="noopener" class="pc-btn pc-btn-etsy" onclick="AS.track('etsy_drop'); event.stopPropagation()">View on Etsy</a>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════
+     JOURNAL
+═══════════════════════════════════════════════════════ -->
+<section id="journal">
+    <div class="section-head">
+        <span class="eyebrow reveal">Journal</span>
+        <h2 class="reveal reveal-d1">Stories from the natural world.</h2>
+        <p class="reveal reveal-d2">Reflections on stones, nature, women, symbolism, and the quiet art of craftsmanship.</p>
+    </div>
+
+    <div class="journal-grid">
+        <div class="journal-card reveal">
+            <p class="jc-tag">Stones & Meaning</p>
+            <h3>The Language of Stones — What Each Gem Carries</h3>
+            <p>From deep red ruby to violet amethyst — every stone holds a quiet story. A journey through the symbolism of the gems we work with every day.</p>
+            <span class="jc-read">Coming Soon</span>
+        </div>
+
+        <div class="journal-card reveal reveal-d1">
+            <p class="jc-tag">Women & Nature</p>
+            <h3>The Woman Who Wears the Forest — On Feminine Strength</h3>
+            <p>Nature does not shout. It grows, transforms, and endures. A reflection on the quiet power women share with the natural world around us.</p>
+            <span class="jc-read">Coming Soon</span>
+        </div>
+
+        <div class="journal-card reveal reveal-d2">
+            <p class="jc-tag">Craftsmanship</p>
+            <h3>Silver, Fire, and Form — How a Piece Comes to Life</h3>
+            <p>Behind every pendant and necklace is a process of patience, precision, and presence. An inside look at how Alina Silvera pieces are made.</p>
+            <span class="jc-read">Coming Soon</span>
+        </div>
+    </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════
+     CTA
+═══════════════════════════════════════════════════════ -->
+<section id="cta">
+    <span class="eyebrow reveal">Carry Nature With You</span>
+    <h2 class="reveal reveal-d1">Find your piece.</h2>
+    <p class="reveal reveal-d2">
+        Discover jewelry created for women who find beauty in simplicity, strength in softness,
+        and peace in the present moment.
+    </p>
+    <a href="https://alinasilvera.etsy.com"
+       target="_blank"
+       rel="noopener"
+       class="btn btn-light reveal reveal-d3"
+       onclick="AS.track('cta_etsy_click')">
+        Explore the Collection on Etsy
+    </a>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════
+     FOOTER
+═══════════════════════════════════════════════════════ -->
+<footer id="footer">
+    <div class="footer-grid">
+        <div class="footer-brand">
+            <h3>Alina Silvera</h3>
+            <p>Nature-inspired silver jewelry for women. Created with simplicity, elegance, and quiet strength.</p>
+            <div class="footer-socials">
+                <a href="https://instagram.com/alinasilveraconcept"
+                   target="_blank" rel="noopener"
+                   class="footer-social-link"
+                   title="Instagram"
+                   onclick="AS.track('footer_instagram')">IG</a>
+                <a href="https://alinasilvera.etsy.com"
+                   target="_blank" rel="noopener"
+                   class="footer-social-link"
+                   title="Etsy Shop"
+                   onclick="AS.track('footer_etsy')">ET</a>
+                <a href="mailto:alinasilveraconcept@gmail.com"
+                   class="footer-social-link"
+                   title="Email"
+                   onclick="AS.track('footer_email')">✉</a>
+            </div>
+        </div>
+
+        <div class="footer-col">
+            <h4>Navigate</h4>
+            <ul>
+                <li><a href="#hero">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#collection">Collection</a></li>
+                <li><a href="#journal">Journal</a></li>
+            </ul>
+        </div>
+
+        <div class="footer-col">
+            <h4>Shop</h4>
+            <ul>
+                <li><a href="https://alinasilvera.etsy.com" target="_blank" rel="noopener">Etsy Store</a></li>
+                <li><a href="#collection">All Pieces</a></li>
+                <li><a href="#collection">Necklaces</a></li>
+                <li><a href="#collection">Pendants</a></li>
+            </ul>
+        </div>
+
+        <div class="footer-col">
+            <h4>Connect</h4>
+            <ul>
+                <li><a href="https://instagram.com/alinasilveraconcept" target="_blank" rel="noopener">Instagram</a></li>
+                <li><a href="mailto:alinasilveraconcept@gmail.com">Email Us</a></li>
+                <li><a href="https://alinasilvera.etsy.com" target="_blank" rel="noopener">Etsy Shop</a></li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="footer-bottom">
+        <p>© 2025 Alina Silvera. All rights reserved.</p>
+        <p>Handcrafted with love and intention.</p>
+    </div>
+</footer>
+
+<!-- ═══════════════════════════════════════════════════════
+     JAVASCRIPT
+═══════════════════════════════════════════════════════ -->
+<script>
+    /* ─────────────────────────────────────────────────────
+       ANALYTICS PLACEHOLDER
+       Replace the body of AS.track() with your real tool.
+       Options:
+         Google Analytics 4:  gtag('event', name, props)
+         Plausible:           plausible(name, { props })
+         Fathom:              fathom.trackEvent(name)
+    ───────────────────────────────────────────────────── */
+    const AS = {
+        _log: [],
+        _pageViews: 0,
+
+        track(eventName, props) {
+            const entry = {
+                event:     eventName,
+                props:     props || {},
+                timestamp: new Date().toISOString(),
+                url:       window.location.href
+            };
+            this._log.push(entry);
+
+            /* ── TODO: wire in your analytics tool here ── */
+            // gtag('event', eventName, props);
+            // plausible(eventName, { props });
+
+            if (typeof console !== 'undefined') {
+                console.log('%c[Alina Silvera]', 'color:#0D1B2A;font-weight:bold', eventName, props || '');
+            }
+        },
+
+        pageView() {
+            this._pageViews++;
+            this.track('page_view', { title: document.title });
+        }
+    };
+
+    window.addEventListener('load', () => AS.pageView());
+
+    /* ─────────────────────────────────────────────────────
+       SCROLL-REVEAL
+    ───────────────────────────────────────────────────── */
+    const revealObserver = new IntersectionObserver((entries) => {
+        entries.forEach(el => {
+            if (el.isIntersecting) {
+                el.target.classList.add('visible');
+                revealObserver.unobserve(el.target);
+            }
+        });
+    }, { threshold: 0.12 });
+
+    document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+
+    /* ─────────────────────────────────────────────────────
+       NAV — scroll shadow + shrink
+    ───────────────────────────────────────────────────── */
+    const nav = document.getElementById('nav');
+    window.addEventListener('scroll', () => {
+        nav.classList.toggle('shadowed', window.scrollY > 40);
+    }, { passive: true });
+
+    /* ─────────────────────────────────────────────────────
+       MOBILE MENU
+    ───────────────────────────────────────────────────── */
+    const hamburger  = document.getElementById('hamburger');
+    const mobileNav  = document.getElementById('mobileNav');
+
+    hamburger.addEventListener('click', () => {
+        mobileNav.classList.toggle('open');
+    });
+
+    function closeMobile() {
+        mobileNav.classList.remove('open');
+    }
+
+    window.addEventListener('scroll', closeMobile, { passive: true });
+
+    /* ─────────────────────────────────────────────────────
+       SMOOTH SCROLL (anchor links)
+    ───────────────────────────────────────────────────── */
+    document.querySelectorAll('a[href^="#"]').forEach(link => {
+        link.addEventListener('click', function(e) {
+            const target = document.querySelector(this.getAttribute('href'));
+            if (!target) return;
+            e.preventDefault();
+            const offset = nav.offsetHeight;
+            const top    = target.getBoundingClientRect().top + window.scrollY - offset;
+            window.scrollTo({ top, behavior: 'smooth' });
+        });
+    });
+
+    /* ─────────────────────────────────────────────────────
+       HERO IMAGE PARALLAX (subtle)
+    ───────────────────────────────────────────────────── */
+    const heroVisual = document.querySelector('.hero-visual img');
+    if (heroVisual) {
+        window.addEventListener('scroll', () => {
+            const scrolled = window.scrollY;
+            if (scrolled < window.innerHeight) {
+                heroVisual.style.transform = `translateY(${scrolled * 0.12}px)`;
+            }
+        }, { passive: true });
+    }
+</script>
+
+</body>
+</html>
